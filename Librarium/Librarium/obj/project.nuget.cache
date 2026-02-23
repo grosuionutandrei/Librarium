@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "8YDSe3ZXxBI=",
+  "success": true,
+  "projectFilePath": "D:\\TOP_UP\\DB\\Librarium\\Librarium\\Librarium\\Librarium.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ionut\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.13\\microsoft.aspnetcore.openapi.9.0.13.nupkg.sha512",
+    "C:\\Users\\ionut\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

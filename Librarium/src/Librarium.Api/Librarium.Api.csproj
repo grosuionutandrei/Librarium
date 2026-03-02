@@ -16,6 +16,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Librarium.Data\Librarium.Data.csproj" />
+      <ProjectReference Include="..\Librarium.Services\Librarium.Services.csproj" />
+      <ProjectReference Include="..\models\models.csproj" />
     </ItemGroup>
 
 </Project>

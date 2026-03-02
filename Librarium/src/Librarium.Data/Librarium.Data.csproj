@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Error-definitions\Error-definitions.csproj" />
+      <ProjectReference Include="..\Librarium.Services\Librarium.Services.csproj" />
     </ItemGroup>
 
     <ItemGroup>

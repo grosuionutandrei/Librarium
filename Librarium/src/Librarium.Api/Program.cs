@@ -1,8 +1,12 @@
+using Librarium.Data;
+using Librarium.Data.infrastructure.configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureOptions(builder.Configuration);
+builder.Services.AddDataSourceAndRepositories();
 // builder.Services.AddDataSourceAndRepositories();
 // builder.Services.AddSingleton<ArticleDbContextFactory>();
 var app = builder.Build();

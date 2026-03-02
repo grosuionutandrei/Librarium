@@ -1,0 +1,13 @@
+﻿# Secrets - never commit
+.env
+**/appsettings.Development.json
+
+# Build outputs
+**/bin/
+**/obj/
+
+# Rider/VS
+.idea/
+.vs/
+*.user
+

@@ -7,9 +7,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="application-interfaces\" />
-      <Folder Include="application-services\" />
-      <Folder Include="src\" />
+      <ProjectReference Include="..\Error-definitions\Error-definitions.csproj" />
+      <ProjectReference Include="..\models\models.csproj" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.3" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.3" />
     </ItemGroup>
 
 </Project>

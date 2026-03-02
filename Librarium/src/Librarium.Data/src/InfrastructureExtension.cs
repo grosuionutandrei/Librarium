@@ -1,5 +1,7 @@
-﻿using Librarium.Data.infrastructure;
+﻿﻿﻿using Librarium.Data.infrastructure;
 using Librarium.Data.infrastructure.configuration;
+using Librarium.Data.infrastructure.repositories;
+using Librarium.Services.application_services.ports;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -18,6 +20,11 @@ namespace Librarium.Data
                     options.EnableSensitiveDataLogging();
                 }
             );
+            
+            // Register repositories
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IMemberRepository, MemberRepository>();
+            
             return services;
         }
     }

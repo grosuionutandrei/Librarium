@@ -1,5 +1,6 @@
 ﻿using Librarium.Data.infrastructure.repositories.dto;
 using Microsoft.EntityFrameworkCore;
+using MemberDto = models.dto.MemberDto;
 
 namespace Librarium.Data.infrastructure;
 

@@ -7,9 +7,11 @@ namespace Domain.member;
 /// </summary>
 public class Member
 {
+    public MemberId MemberId { get; private set; }
     public string FirstName { get; }
     public string LastName { get; }
     public Email Email { get; }
+    public PhoneNumber PhoneNumber { get; }
 
     public Member(string firstName, string lastName, Email email)
     {
@@ -23,5 +25,21 @@ public class Member
         FirstName = firstName.Trim();
         LastName = lastName.Trim();
         Email = email;
+    }
+    
+    public Member(MemberId id,string firstName, string lastName, Email email,PhoneNumber phoneNumber)
+    {
+        if (string.IsNullOrWhiteSpace(firstName))
+            throw new MemberInvalid("First name cannot be null or empty.");
+        if (string.IsNullOrWhiteSpace(lastName))
+            throw new MemberInvalid("Last name cannot be null or empty.");
+        if (email == null)
+            throw new MemberInvalid("Email cannot be null.");
+
+        FirstName = firstName.Trim();
+        LastName = lastName.Trim();
+        Email = email;
+        PhoneNumber = phoneNumber;
+        MemberId = id;
     }
 }

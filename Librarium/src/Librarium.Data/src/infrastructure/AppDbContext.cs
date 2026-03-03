@@ -1,7 +1,7 @@
 ﻿using Librarium.Data.infrastructure.repositories.dto;
 using Microsoft.EntityFrameworkCore;
 using BookDto = Librarium.Data.infrastructure.repositories.dto.BookDto;
-using MemberDto = models.api_models.MemberDto;
+using MemberDto = Librarium.Data.infrastructure.repositories.dto.MemberDto;
 
 namespace Librarium.Data.infrastructure;
 
@@ -56,6 +56,9 @@ public class AppDbContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(255).IsRequired();
             entity.Property(e => e.FirstName).HasMaxLength(100).IsRequired();
             entity.Property(e => e.LastName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.MemberId).IsRequired();
+            entity.Property(e => e.PhoneNumber).HasMaxLength(20).IsRequired();
+           
             entity.ToTable("Members");
         });
     

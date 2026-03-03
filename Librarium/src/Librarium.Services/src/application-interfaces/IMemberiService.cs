@@ -5,4 +5,5 @@ namespace Librarium.Services.application_interfaces;
 public interface IMemberService
 {
     Task<List<MemberDto>> GetAllMembers();
+    Task<List<MemberWithPhoneNumberDto>> GetAllMembersWithPhoneNumber();
 }

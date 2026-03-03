@@ -15,5 +15,6 @@ public class BookDto
     public string? Title { get; set; }
 
     public int PublicationYear { get; set; }
+ 
     public ICollection<AuthorDto> Authors { get; set; }
 }

@@ -1,4 +1,5 @@
-﻿using Librarium.Services.application_services.ports;
+﻿using Domain.member;
+using Librarium.Services.application_services.ports;
 using Microsoft.EntityFrameworkCore;
 using models.api_models;
 
@@ -16,5 +17,11 @@ public class MemberRepository(AppDbContext _dbContext):IMemberRepository
                 m.Email
             ))
             .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Member>> GetAllMembersWithPhoneNumber()
+    {
+        return await _dbContext.Members.Select(m =>
+            new Member(new MemberId(m.MemberId),m.FirstName,m.LastName, new Email(m.Email), new PhoneNumber(m.PhoneNumber))).ToListAsync();
     }
 }

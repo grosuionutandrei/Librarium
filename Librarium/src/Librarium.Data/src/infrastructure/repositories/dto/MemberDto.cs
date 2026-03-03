@@ -9,8 +9,9 @@ namespace Librarium.Data.infrastructure.repositories.dto;
 /// </summary>
 public class MemberDto
 {
-  
-
+    [NotNull]
+    public Guid MemberId { get; set; }
+    
     [NotNull]
     public string? FirstName { get; set; }
 
@@ -19,4 +20,6 @@ public class MemberDto
 
     [Key]
     public string? Email { get; set; }
+    [NotNull]
+    public string PhoneNumber { get; set; }
 }

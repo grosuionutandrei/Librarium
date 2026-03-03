@@ -23,5 +23,24 @@ public class BooksController(IBookService bookService) : ControllerBase
     }
 }
 
-public record BookDto(string Isbn, string Title, int PublicationYear);
+
+[ApiController]
+[Route("api/v2/[controller]")]
+public class BooksV2Controller(IBookService bookService) : ControllerBase
+{
+    [HttpGet]
+    public async Task<IActionResult> GetAllBooksWithAuthors()
+    {
+        try
+        {
+            var books = await bookService.GetAllBooksWithAuthors();
+            return Ok(books);
+        }
+        catch (BookInvalid bookInvalid)
+        {
+            return NotFound(new BookError(BookError.Codes.BookNotFound, bookInvalid.Message));
+        }
+    }
+}
+
 

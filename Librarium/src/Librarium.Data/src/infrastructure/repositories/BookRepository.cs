@@ -1,9 +1,11 @@
 ﻿
-using Librarium.Data.domain.book;
+
+using Domain.author;
+using Domain.book;
 using Librarium.Data.infrastructure.repositories.dto;
 using Librarium.Services.application_services.ports;
 using Microsoft.EntityFrameworkCore;
-using models.dto;
+using models.api_models;
 
 namespace Librarium.Data.infrastructure.repositories;
 
@@ -43,28 +45,31 @@ public class BookRepository : IBookRepository
         return await _dbContext.Books
             .Where(b => b.Isbn != null)
             .Select(b => new BooksDto(
-                b.Title,
+                b.Title!,
                 b.Isbn!,
                 b.PublicationYear
             ))
             .ToListAsync();
     }
-    
-    
-    
 
-  
+    public async Task<IEnumerable<Book>> GetAllBooksWithAuthorsAsync()
+    {
+        var bookData = await _dbContext.Books
+            .Include(b => b.Authors)
+            .Where(b => b.Isbn != null)
+            .ToListAsync();
 
-
-
-
-
-
-
-  
-
- 
-
-  
+        return bookData.Select(b => new Book(
+            new InternationalStandardBookNumber(b.Isbn!),
+            new BookTitle(b.Title!),
+            new PublicationYear(b.PublicationYear),
+            b.Authors.Select(a => new Author(
+                a.AuthorId,
+                new AuthorFirstName(a.FirstName),
+                new AuthorLastName(a.LastName),
+                new AuthorBiography(a.Biography)
+            )).ToList()
+        ));
+    }
 }
 

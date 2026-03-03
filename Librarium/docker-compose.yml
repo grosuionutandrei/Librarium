@@ -8,6 +8,7 @@
     environment:
       - AppInfrastructureOptions__ConnectionString=${LIBRARIUM_CONNECTION_STRING}
       - AppInfrastructureOptions__DatabaseProvider=${LIBRARIUM_DATABASE_PROVIDER}
+      - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
       librarium-db:
         condition: service_healthy

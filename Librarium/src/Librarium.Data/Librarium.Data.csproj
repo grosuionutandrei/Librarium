@@ -7,10 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="src\infrastructure\AppDbContext\" />
-    </ItemGroup>
-
-    <ItemGroup>
+      <ProjectReference Include="..\Domain\Domain.csproj" />
       <ProjectReference Include="..\Error-definitions\Error-definitions.csproj" />
       <ProjectReference Include="..\Librarium.Services\Librarium.Services.csproj" />
     </ItemGroup>

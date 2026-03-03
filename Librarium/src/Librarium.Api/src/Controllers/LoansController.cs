@@ -1,7 +1,7 @@
 ﻿using Error_definitions;
 using Librarium.Services.application_interfaces;
 using Microsoft.AspNetCore.Mvc;
-using models.dto;
+using models.api_models;
 
 namespace Librarium.Api.Controllers;
 

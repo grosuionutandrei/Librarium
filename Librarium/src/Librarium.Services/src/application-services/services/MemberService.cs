@@ -12,4 +12,11 @@ public class MemberService(IMemberRepository memberRepository):IMemberService
         var response = await memberRepository.GetAllMembers();
         return response.ToList();
     }
+
+    public async Task<List<MemberWithPhoneNumberDto>> GetAllMembersWithPhoneNumber()
+    {
+        
+        var response = await memberRepository.GetAllMembersWithPhoneNumber();
+        return response.Select(m=> new MemberWithPhoneNumberDto(m.MemberId.Id,m.FirstName,m.LastName,m.Email.ToString(),m.PhoneNumber.ToString())).ToList();
+    }
 }

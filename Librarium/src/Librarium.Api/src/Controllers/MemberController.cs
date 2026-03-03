@@ -8,7 +8,7 @@ namespace Librarium.Api.Controllers;
 [Route("api/[controller]")]
 public class MemberController(IMemberService memberService) : ControllerBase
 {
-    // GET /api/members
+   
     [HttpGet]
     public async Task<IActionResult> GetAllMembers()
     {
@@ -26,5 +26,29 @@ public class MemberController(IMemberService memberService) : ControllerBase
     }
     
 }
+
+[ApiController]
+[Route("api/[controller]")]
+
+public class MemberV2Controller(IMemberService memberService) : ControllerBase
+{
+    [HttpGet]
+    public async Task<IActionResult> GetAllMembersWithPhoneNumber()
+    {
+        try
+        {
+            var response = await memberService.GetAllMembersWithPhoneNumber();
+            return Ok(response);
+
+        }
+        catch(MemberInvalid)
+        {
+            return NotFound(new { message = "Member not found" });
+        }
+        
+    }
+    
+}
+
 
 

@@ -1,6 +1,11 @@
 ﻿namespace models.dto;
 
-public class LoanDto
-{
-    
-}
+/// <summary>
+/// Data Transfer Object for Loan.
+/// Represents a loan record with member and book information.
+/// Used in API responses and requests for loan operations.
+/// </summary>
+public record LoanDto(
+    string BookIsbn,
+    DateTime LoanDate,
+    DateTime? ReturnDate);

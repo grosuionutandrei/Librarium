@@ -1,6 +1,3 @@
 ﻿namespace models.dto;
 
-public class CreateLoanResponseDto
-{
-    
-}
+public record CreateLoanResponse(bool Created);

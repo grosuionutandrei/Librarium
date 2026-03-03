@@ -1,6 +1,7 @@
 ﻿using Librarium.Data.infrastructure.repositories.dto;
 using Microsoft.EntityFrameworkCore;
-using MemberDto = models.dto.MemberDto;
+using BookDto = Librarium.Data.infrastructure.repositories.dto.BookDto;
+using MemberDto = models.api_models.MemberDto;
 
 namespace Librarium.Data.infrastructure;
 
@@ -28,6 +29,13 @@ public class AppDbContext : DbContext
     /// Loans DbSet
     /// </summary>
     public DbSet<LoanDto> Loans { get; set; }
+    /// <summary>
+    /// Authors DbSet
+    /// </summary>
+    public DbSet<AuthorDto> Authors { get; set; }
+
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -75,5 +83,21 @@ public class AppDbContext : DbContext
     
             entity.ToTable("Loans");
         });
+
+        modelBuilder.Entity<AuthorDto>(entity =>
+        {
+            entity.HasKey(e => e.AuthorId);
+            entity.Property(e => e.AuthorId).ValueGeneratedOnAdd();
+            entity.Property(e => e.FirstName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.LastName).HasMaxLength(100).IsRequired();
+            entity.Property(e => e.Biography).HasMaxLength(2000).IsRequired(false);
+            entity.ToTable("Authors");
+        });
+
+        // Many-to-many: Book ↔ Author via explicit join table "BookAuthors"
+        modelBuilder.Entity<BookDto>()
+            .HasMany(b => b.Authors)
+            .WithMany(a => a.BooksDto)
+            .UsingEntity(j => j.ToTable("BookAuthors"));
     }
 }

@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="src\dto\" />
+      <Folder Include="src\" />
+      <ProjectReference Include="..\Error-definitions\Error-definitions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Error-definitions\Error-definitions.csproj" />
     </ItemGroup>
 
 </Project>

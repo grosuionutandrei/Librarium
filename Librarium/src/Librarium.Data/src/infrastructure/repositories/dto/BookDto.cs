@@ -2,7 +2,6 @@
 using System.Diagnostics.CodeAnalysis;
 
 namespace Librarium.Data.infrastructure.repositories.dto;
-
 /// <summary>
 /// Data Transfer Object for Book entity.
 /// Used for database persistence and API communication.
@@ -16,4 +15,5 @@ public class BookDto
     public string? Title { get; set; }
 
     public int PublicationYear { get; set; }
+    public ICollection<AuthorDto> Authors { get; set; }
 }

@@ -1,5 +1,5 @@
-﻿
-using models.dto;
+﻿using Domain.book;
+using models.api_models;
 
 namespace Librarium.Services.application_services.ports;
 /// <summary>
@@ -9,4 +9,6 @@ namespace Librarium.Services.application_services.ports;
 public interface IBookRepository
 {
     Task<IEnumerable<BooksDto>> GetAllBooksAsync();
+    Task<IEnumerable<Book>> GetAllBooksWithAuthorsAsync();
 }
+

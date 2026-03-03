@@ -1,6 +1,6 @@
 ﻿using Librarium.Services.application_services.ports;
 using Microsoft.EntityFrameworkCore;
-using models.dto;
+using models.api_models;
 
 namespace Librarium.Data.infrastructure.repositories;
 

@@ -1,6 +1,9 @@
-﻿namespace Librarium.Services.application_interfaces;
+﻿using models.dto;
 
-public class ILoansService
+namespace Librarium.Services.application_interfaces;
+
+public interface ILoansService
 {
-    
+    Task<List<LoanDto>> GetLoansByMember(string memberEmail);
+    Task<CreateLoanResponse> CreateLoan(CreateLoanRequest request);
 }

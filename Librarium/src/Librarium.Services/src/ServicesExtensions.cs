@@ -10,6 +10,7 @@ public static class ServiceExtensions
     {
         services.AddScoped<IBookService, BookService>();
         services.AddScoped<IMemberService, MemberService>();
+        services.AddScoped<ILoansService, LoanService>();
         return services;
     }
 }

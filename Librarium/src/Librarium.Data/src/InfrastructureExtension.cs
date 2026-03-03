@@ -24,8 +24,11 @@ namespace Librarium.Data
             // Register repositories
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IMemberRepository, MemberRepository>();
+            services.AddScoped<ILoanRepository, LoansRepository>();
             
             return services;
         }
     }
 }
+
+

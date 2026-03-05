@@ -6,6 +6,7 @@ namespace Librarium.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+
 public class BooksController(IBookService bookService) : ControllerBase
 {
     [HttpGet]

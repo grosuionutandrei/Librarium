@@ -21,7 +21,7 @@ public class LoansController(ILoansService loansService) : ControllerBase
         return Ok(response);
     }
 
-    // GET /api/loans/{memberId}
+
     [HttpGet("{memberEmail}")]
     public async Task<IActionResult> GetLoansByMember(string memberEmail)
     {
@@ -38,5 +38,38 @@ public class LoansController(ILoansService loansService) : ControllerBase
     }
 }
 
+[ApiController]
+[Route("api/v2/[controller]")]
+public class LoansV2Controller(ILoansService loansService) : ControllerBase
+{
+    
 
-public record LoanDto(Guid LoanId, string MemberId, string Isbn, DateTime LoanDate);
+    [HttpGet("{memberEmail}")]
+    public async Task<IActionResult> GetLoansWithStatusByMember(string memberEmail)
+    {
+        try
+        {
+            var response = await loansService.GetLoansWithStatusByMember(memberEmail);
+            return Ok(response);
+        }
+        catch (LoanInvalid ex)
+        {
+            return  NotFound(new LoanError(LoanError.Codes.LoanNotFound, ex.Message));
+        }
+
+    }
+    
+
+    [HttpPost]
+    public async Task<IActionResult> CreateV2Loan([FromBody] CreateLoanWithStatus request)
+    {
+        var response = await  loansService.CreateLoanWithStatus(request);
+        if (!response.Created)
+        {
+            return BadRequest(response);
+        }
+        return Ok(response);
+    }
+    
+}
+

@@ -1,4 +1,0 @@
-﻿USING Librarium
-GO
-ALTER TABLE Members
-ADD CONSTRAINT Email UNIQUE 
